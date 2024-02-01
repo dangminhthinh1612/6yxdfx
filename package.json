@@ -1,6 +1,7 @@
 {
   "name": "6yxdfx",
   "version": "0.1.0",
+	"homepage": "https://dangminhthinh1612.github.io/6yxdfx/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
