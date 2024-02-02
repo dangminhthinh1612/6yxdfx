@@ -30,7 +30,8 @@ export default function App() {
     setLoading(true);
 
     await fetch(
-      "https://kinhte.congthuong.vn/search_enginer.html?p=tim-kiem&q=thanh%20th%C3%BAy"
+      // "https://kinhte.congthuong.vn/search_enginer.html?p=tim-kiem&q=thanh%20th%C3%BAy"
+			"https://kinhte.congthuong.vn/search_enginer.html?BRSR=2&p=tim-kiem&q=thanh+th%C3%BAy"
     )
       .then((response) => response.text())
       .then((html) => {
@@ -39,7 +40,7 @@ export default function App() {
         $("a.article-link").each((index, element) => {
           const href = $(element).attr("href");
           listHrefs.push({
-            iId: (Date.now() + index).toString(),
+            iId: `${Date.now()}${index}`,
             num: viewNumber,
             url: `https://kinhte.congthuong.vn/${href}`,
           });
@@ -90,7 +91,7 @@ export default function App() {
   });
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <Table bordered size="small">
         <tbody>
           <tr>
@@ -101,7 +102,7 @@ export default function App() {
                 variant="warning"
                 disabled={isLoading}
               >
-                {isLoading ? "Loading ..." : "Add 20 lastest article"}
+                {isLoading ? "Loading ..." : "Add 20 articles"}
               </Button>
             </td>
             <td>
