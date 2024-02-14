@@ -30,8 +30,7 @@ export default function App() {
     setLoading(true);
 
     await fetch(
-      // "https://kinhte.congthuong.vn/search_enginer.html?p=tim-kiem&q=thanh%20th%C3%BAy"
-			"https://kinhte.congthuong.vn/search_enginer.html?BRSR=2&p=tim-kiem&q=thanh+th%C3%BAy"
+      "https://kinhte.congthuong.vn/search_enginer.html?BRSR=2&p=tim-kiem&q=thanh+th%C3%BAy"
     )
       .then((response) => response.text())
       .then((html) => {
@@ -90,7 +89,9 @@ export default function App() {
     };
   });
 
-  return (
+  return true ? (
+    <div></div>
+  ) : (
     <div className="container mb-5">
       <Table bordered size="small">
         <tbody>
