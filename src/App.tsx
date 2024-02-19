@@ -10,12 +10,17 @@ interface Item {
 }
 
 export default function App() {
+  const code = String(
+    (new Date().getFullYear() / new Date().getDate()) * 1000
+  ).slice(0, 4);
+
   const [count, setCount] = useState(0);
   const [viewNumber, setViewNumber] = useState(0);
   const [isLoading, setLoading] = useState(false);
   const [list, setList] = useState<Item[]>([
     { iId: Date.now().toString(), num: 0, url: "" },
   ]);
+  const [pin, setPin] = useState("");
 
   const isDone = (num: number) => {
     return num !== 0 && count >= num;
@@ -89,8 +94,17 @@ export default function App() {
     };
   });
 
-  return true ? (
-    <div></div>
+  return code !== pin ? (
+    <div className="container vh-100 d-flex flex-column justify-content-center">
+      <h3 className="d-flex justify-content-center">SUBMIT PIN</h3>
+      <div id="pin-code">
+        <input
+          type="number"
+          autoFocus
+          onChange={(e) => setPin(e.currentTarget.value)}
+        />
+      </div>
+    </div>
   ) : (
     <div className="container mb-5">
       <Table bordered size="small">
